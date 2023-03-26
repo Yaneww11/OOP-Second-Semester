@@ -1,0 +1,17 @@
+#include <iostream>
+#include "Building.h"
+
+using namespace std;
+
+int main()
+{
+    Building b("A2", 10, 3, 2, 1);
+    b.print();
+    3 += b;
+    b.print();
+    cin >> b;
+    cout << b;
+
+    return 0;
+}
+

@@ -14,8 +14,12 @@ public:
 	Programmer(string name, double salary);
 	Programmer(const Programmer&);
 	~Programmer();
+	void set_salary(double);
+	double get_salary() const;
 	string get_name() const;
 	Programmer& operator=(const Programmer&);
+private:
+	double salary;
 };
 ostream& operator << (ostream&, const Programmer&);
 

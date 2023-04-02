@@ -3,15 +3,25 @@
 
 
 Programmer::Programmer():Employee() {
-
+	salary = 0;
 }
-Programmer::Programmer(string n, double s):Employee(n, s) {
+Programmer::Programmer(string n, double s):Employee(n) {
+	salary = s;
 
 }
 Programmer::Programmer(const Programmer& p) {
-	Employee::Employee(p.get_name(), p.get_salary());
+	Employee::Employee(p.get_name());
+	salary = p.salary;
 }
-Employee::~Employee() {
+Programmer::~Programmer() {
+}
+void Programmer::set_salary(double s)
+{
+	this->salary = s;
+}
+double Programmer::get_salary() const
+{
+	return salary;
 }
 
 string Programmer::get_name() const
@@ -23,14 +33,14 @@ string Programmer::get_name() const
 Programmer& Programmer::operator=(const Programmer& p)
 {
 	if (this != &p) {
-		Employee::operator=(p);
+		salary = p.salary;
 	}
 	return *this;
 }
 
 ostream& operator<<(ostream& out, const Programmer& p)
 {
-	out << *dynamic_cast<const Employee*>(&p) << endl;
+	out << *dynamic_cast<const Employee*>(&p) << "Salary is: " << p.salary << endl;
 	return out;
 }
 

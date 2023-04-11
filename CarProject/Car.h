@@ -28,6 +28,10 @@ public:
     string getColor();
     int getTopSpeed();
 
+   
+    void setMake(string);
+    void setModel(string);
+    void setColor(string);
     void set_top_speed(int);
 
     Car& operator=(const Car&);

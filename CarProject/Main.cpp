@@ -35,4 +35,5 @@ int main()
 
     Owner owner1("Yane", 20, car4);
     owner1.sitInCar();
+    person2.compare_age(owner1);
 }

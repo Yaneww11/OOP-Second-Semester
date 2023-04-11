@@ -1,29 +1,14 @@
 #include "Owner.h"
-#include "Car.h"
 
-using namespace std;
-
-// Default constructor
-Owner::Owner() : PersonDriver() {
+Owner::Owner() : Person()
+{
     car = Car();
 }
 
-// Parameterized constructor
-Owner::Owner(string name, int age, bool has_driver_license, Car car) : PersonDriver(name, age, has_driver_license) {
-    this->car = car;
+Owner::Owner(string n,int age, Car c) : Person(n, age) {
+    car = c;
 }
 
-// Setter
-void Owner::setProperty(Car car) {
-    this->car = car;
-}
-
-// Getter
-Car Owner::getProperty() const {
-    return car;
-}
-
-// Print owner details
-void Owner::print() const {
-    PersonDriver::print();
+void Owner::sitInCar() {
+    cout << getName() << " is sitting in their " << car.getColor() << " " << car.getMake() << " " << car.getModel() << "." << endl;
 }

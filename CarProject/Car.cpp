@@ -1,99 +1,94 @@
 #include "Car.h"
-#include <iostream>
 
-using namespace std;
-
-Car::Car()
-{
-	brand = "No brand";
-	colour = "No colour";
-	top_speed = 0;
+Car::Car(){
+    // initialize default values
+    make = "unknown";
+    model = "unknown";
+    color = "unknown";
+    top_speed = 0;
+}
+Car::Car(string mk, string mdl, string clr, int top_speed) {
+    make = mk;
+    model = mdl;
+    color = clr;
+    if (top_speed > 0) {
+        this->top_speed = top_speed;
+    }
+    else {
+        this->top_speed = 0;
+    }
 }
 
-Car::Car(string brand, string colour, int top_speed)
-{
-	this->brand = brand;
-	this->colour = colour;
-	if (top_speed > 0) {
-		this->top_speed = top_speed;
-	}
-	else{
-		this->top_speed = 0;
-	}
+string Car::getMake() {
+    return make;
 }
 
-Car::~Car()
-{
+string Car::getModel() {
+    return model;
 }
 
-void Car::set_brand(string brand)
-{
-	this->brand = brand;
+string Car::getColor() {
+    return color;
 }
 
-void Car::set_colour(string colour)
+int Car::getTopSpeed()
 {
-	this->colour = colour;
+    return top_speed;
 }
+
 
 void Car::set_top_speed(int top_speed)
 {
-	if (top_speed > 0) {
-		this->top_speed = top_speed;
-	}
-	else {
-		this->top_speed = 0;
-	}
+    if (top_speed > 0) {
+        this->top_speed = top_speed;
+    }
+    else {
+        this->top_speed = 0;
+    }
 }
 
-string Car::get_brand() const
+void Car::setMake(string make)
 {
-	return brand;
+    this->make = make;
 }
 
-string Car::get_colour() const
+void Car::setModel(string model)
 {
-	return colour;
+    this->model = model;
 }
 
-int Car::get_top_speed() const
+void Car::setColor(string color)
 {
-	return top_speed;
+    this->color = color;
 }
 
-void Car::print()
+Car operator+(const Car& car, const int& n)
 {
-	cout << "Brand of car is: " << brand << endl;
-	cout << "Colour of car is: " << colour << endl;
-	cout << "Top speed of car is: " << top_speed << endl;
+    return Car(car.make,car.model, car.color, car.top_speed + n);
 }
-
-Car operator+(const Car& car, const int& n )
+Car operator-(const Car& car, const int& n)
 {
-	return Car(car.brand, car.colour, car.top_speed + n);
-}
-Car operator-(const Car& car , const int& n)
-{
-	return Car(car.brand, car.colour, car.top_speed - n);
+    return Car(car.make, car.model, car.color, car.top_speed - n);
 }
 ostream& operator<<(ostream& out, const Car& car)
 {
-	out << "Brand: " << car.brand << endl;
-	out << "Colour: " << car.colour << endl;
-	out << "Top Speed: " << car.top_speed << endl;
-	return out;
+    out << "Brand: " << car.make << " " << car.model << endl;
+    out << "Colour: " << car.color << endl;
+    out << "Top Speed: " << car.top_speed << endl;
+    return out;
 }
 Car& Car::operator=(const Car& car)
 {
-	if (this != &car) {
-		brand = car.brand;
-		colour = car.colour;
-		if (car.top_speed > 0) {
-			top_speed =car.top_speed;
-		}
-		else {
-			top_speed = 0;
-		}
-	}
-	return *this;
+    if (this != &car) {
+        make = car.make;
+        model = car.model;
+        color = car.color;
+        if (car.top_speed > 0) {
+            top_speed = car.top_speed;
+        }
+        else {
+            top_speed = 0;
+        }
+    }
+    return *this;
 }

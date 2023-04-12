@@ -8,5 +8,5 @@ protected:
 public:
     Owner();
     Owner(string , int, Car );
-    void sitInCar();
+    void driveCar();
 };

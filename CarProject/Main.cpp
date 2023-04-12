@@ -34,6 +34,6 @@ int main()
     person1.compare_age(person2);
 
     Owner owner1("Yane", 20, car4);
-    owner1.sitInCar();
+    owner1.driveCar();
     person2.compare_age(owner1);
 }

@@ -1,0 +1,32 @@
+#include <sstream>
+#include <vector>
+#include <iostream>
+
+using namespace std;
+
+vector<int> parseInts(string str){
+    vector<int> integers;
+	stringstream ss;
+	ss << str;
+	int number, counter = 0;
+	char ch;
+	for(int i = 0; i < str.size() ; i++){
+        ss >> number >> ch; //grab the info
+        integers.push_back(number);
+        int offsetNum = to_string(integers[counter]).size(); //get how large that number was (in digits) to get how far we need to pushback incrementer (i)
+        counter++; //for tracking on the vector
+        i = i + offsetNum; //i incrementor push back on top of +1 for each comma which is done in for loop i++ part
+	}
+	return integers;
+}
+
+int main () {
+    string str;
+    cin >> str;
+    vector<int> integers = parseInts(str);
+    for(int i = 0; i < integers.size(); i++) {
+        cout << integers[i] << "\n";
+    }
+
+   return 0;
+}
